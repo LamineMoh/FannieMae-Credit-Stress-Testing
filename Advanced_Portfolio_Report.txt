@@ -1,0 +1,27 @@
+
+ADVANCED CREDIT RISK MODEL - PORTFOLIO REPORT
+============================================================
+Generated: 2026-01-03 03:35:12
+
+RESULTS
+============================================================
+Best Model: Gradient Boosting
+AUC-ROC: 0.9908
+Target (0.75): ACHIEVED
+
+MODEL COMPARISON
+============================================================
+                     Accuracy  Precision  Recall  F1-Score  AUC-ROC
+Logistic Regression    0.9476     0.9399  0.9392    0.9395   0.9886
+Random Forest          0.9524     0.9499  0.9398    0.9448   0.9902
+Gradient Boosting      0.9536     0.9567  0.9354    0.9459   0.9908
+XGBoost                0.9516     0.9461  0.9419    0.9440   0.9905
+LightGBM               0.9521     0.9459  0.9433    0.9446   0.9905
+
+EXPECTED LOSS
+============================================================
+Total Exposure: $7,375,328,098
+Average PD: 43.37%
+LGD: 35%
+Expected Loss: $1,122,533,544
+EL Rate: 15.22%

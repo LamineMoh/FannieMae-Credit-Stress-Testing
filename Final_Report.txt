@@ -1,0 +1,105 @@
+
+================================================================================
+FANNIE MAE 2008Q1 STRESS TESTING - CREDIT DEFAULT PREDICTION
+CRISP-DM ANALYSIS FINAL REPORT
+================================================================================
+
+Report Generated: 2025-12-31 23:11:39
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+
+This analysis applied the CRISP-DM methodology to predict mortgage loan defaults
+during Q1 2008, a critical period of the financial crisis.
+
+KEY RESULTS:
+• Best Model: Gradient Boosting
+• AUC-ROC: 0.6568
+• Target Achievement: ✗ Below target (0.70)
+
+================================================================================
+2. DATA OVERVIEW
+================================================================================
+
+• Period: Q1 2008 (Financial Crisis Stress Period)
+• Source: Fannie Mae Single-Family Loan Performance Data
+• Sample Size: 1,000,000 records
+• Features: 18 engineered features
+• Target: is_default (binary: 0=No Default, 1=Default)
+
+================================================================================
+3. MODEL PERFORMANCE
+================================================================================
+
+                      Accuracy  Precision  Recall  F1-Score  AUC-ROC
+Logistic Regression     0.5532     0.4891  0.5615    0.5228   0.5823
+Random Forest           0.6076     0.5483  0.5664    0.5572   0.6462
+Gradient Boosting       0.6247     0.6172  0.3659    0.4595   0.6568
+Neural Network (MLP)    0.6092     0.5867  0.3502    0.4386   0.6240
+
+BEST MODEL: Gradient Boosting
+------------------------------------
+• AUC-ROC:   0.6568
+• Accuracy:  0.6247
+• Precision: 0.6172
+• Recall:    0.3659
+• F1-Score:  0.4595
+
+================================================================================
+4. CONFUSION MATRIX
+================================================================================
+
+True Negatives (Correct No-Default):  88,301
+False Positives (False Alarms):       18,779
+False Negatives (Missed Defaults):    52,466
+True Positives (Correct Defaults):    30,278
+
+================================================================================
+5. KEY RISK DRIVERS
+================================================================================
+
+Top 5 Features by Importance:
+             Feature  Importance
+      total_expenses    0.544036
+current_deferred_upb    0.405613
+  upb_deferred_ratio    0.035240
+  current_actual_upb    0.014812
+    has_deferred_upb    0.000299
+
+================================================================================
+6. RECOMMENDATIONS
+================================================================================
+
+1. RISK MONITORING:
+   - Monitor loans with high deferred UPB ratios
+   - Flag loans with accumulated delinquent interest
+   - Track high LTV loans (>80%) closely
+
+2. EARLY WARNING SYSTEM:
+   - Implement monthly scoring for all active loans
+   - Set threshold alerts for high-risk predictions
+   - Create intervention workflows for flagged loans
+
+3. MODEL IMPROVEMENT (if AUC < 0.70):
+   - Add Acquisition file features (FICO, original LTV, DTI)
+   - Include geographic risk factors (state, MSA)
+   - Engineer time-series features (payment history)
+   - Consider XGBoost or LightGBM for better performance
+
+================================================================================
+7. FILES GENERATED
+================================================================================
+
+• Phase1_Business_Understanding.ipynb
+• Phase2_Data_Understanding.ipynb
+• Phase3_Data_Preparation.ipynb
+• Phase4_Modeling.ipynb
+• Phase5_Evaluation.ipynb
+• Phase6_Deployment.ipynb
+• Final_Dashboard.png
+• Final_Report.txt
+
+================================================================================
+END OF REPORT
+================================================================================

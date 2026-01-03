@@ -1,0 +1,49 @@
+
+FANNIE MAE 2008Q1 STRESS TESTING - CREDIT DEFAULT PREDICTION
+=============================================================
+
+DATA OVERVIEW:
+--------------
+• Period: Q1 2008 (Financial Crisis Stress Period)
+• Sample Size: 500,000 records analyzed
+• Features Used: current_actual_upb, current_deferred_upb
+• Target Variable: is_default (binary: 0=No Default, 1=Default)
+• Default Rate: 43.39%
+• Clean Dataset Size: 488,873 records
+
+BEST MODEL: Gradient Boosting
+---------------------------------
+• AUC-ROC:   0.5954
+• Accuracy:  0.5934
+• Precision: 0.5579
+• Recall:    0.3030
+• F1-Score:  0.3927
+
+STRESS TEST INSIGHTS:
+---------------------
+1. Model achieves BELOW TARGET 
+   predictive power (AUC < 0.70)
+   
+2. Key Risk Drivers (by importance):
+                feature  importance
+current_deferred_upb    0.980202
+  current_actual_upb    0.019798
+
+3. The model can identify 30.3% of actual defaults
+   (Recall metric - critical for risk management)
+
+CONFUSION MATRIX:
+-----------------
+True Negatives:  45,162
+False Positives: 10,187
+False Negatives: 29,572
+True Positives:  12,854
+
+RECOMMENDATIONS:
+----------------
+1. Monitor loans with high-risk feature values identified above
+2. Implement early warning system for loans approaching delinquency
+3. Consider enhancing model with additional features (FICO score, LTV, DTI)
+4. Regular model recalibration with updated crisis data
+
+Analysis completed at: 2025-12-30 01:31:59
