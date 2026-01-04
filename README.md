@@ -18,6 +18,29 @@ This project implements a **comprehensive CRISP-DM analysis** with **advanced ML
 
 ---
 
+## 📊 Visual Insights & Dashboards
+
+### 1. Portfolio Stress Test Dashboard
+This dashboard captures the core financial impact of interest rate shocks on the portfolio's Probability of Default (PD) and Expected Loss (EL).
+
+![Advanced Portfolio Dashboard](Advanced_Portfolio_Dashboard.png)
+
+### 2. Model Performance & Risk Drivers
+A comparative view of model discrimination (ROC Curves) and the economic factors driving mortgage defaults.
+
+<table style="width:100%">
+  <tr>
+    <th width="50%">Model Discrimination (ROC Curves)</th>
+    <th width="50%">Key Risk Drivers (Feature Importance)</th>
+  </tr>
+  <tr>
+    <td><img src="Phase5_ROC_Curves.png" alt="ROC Curves"></td>
+    <td><img src="Phase5_Feature_Importance.png" alt="Feature Importance"></td>
+  </tr>
+</table>
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -50,6 +73,25 @@ stress_period_2007_2009/
 
 ---
 
+## 📈 Methodology Deep-Dive
+
+### 1. Expected Loss Framework
+We implement the Basel III regulatory framework for calculating credit losses:
+$$Expected Loss = PD \times LGD \times EAD$$
+* **PD**: Predicted by our XGBoost/LightGBM models.
+* **LGD**: Assumed at 35% (standard for secured mortgages).
+* **EAD**: Current Unpaid Principal Balance (UPB).
+
+### 2. Stress Testing & Sensitivity
+We simulate the impact of macroeconomic shifts by applying interest rate shocks to the portfolio:
+
+| Rate Shock | PD Change | EL Impact |
+| :--- | :--- | :--- |
+| **Baseline** | 0% | Baseline |
+| **+100 bps** | +5-10% | Moderate increase in loss reserves |
+| **+300 bps** | +30-50% | Severe capital depletion scenario |
+
+---
 ## 🚀 Quick Start
 
 ### Prerequisites
