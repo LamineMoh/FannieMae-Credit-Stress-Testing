@@ -70,6 +70,19 @@ stress_period_2007_2009/
     ├── README.md
     └── Advanced_Portfolio_Report.txt
 ```
+... (Section Project Structure)
+
+---
+
+## ⚙️ Technical Note: Environment & Optimization
+
+While **PySpark** was initially considered for its distributed processing capabilities to handle the multi-gigabyte Fannie Mae datasets, the project implementation transitioned to **Pandas** for the following reasons:
+
+* **Environment Stability**: Initial attempts with PySpark 4.1.0 on a Windows environment encountered OS-specific socket communication errors (`UnixStreamServer` dependency).
+* **Resource Efficiency**: To maximize the performance of the local **Intel i7 (16GB RAM)** workstation, a high-fidelity sampling strategy was adopted.
+* **Data Persistence**: A sample of **500,000 records** from the Q1 2008 performance file was processed and serialized using **Pickle (`.pkl`)**. This ensured data type integrity and rapid loading for subsequent modeling phases, achieving a balance between data volume and computational speed.
+
+> **Senior Insight**: In a production banking environment, this pipeline can be seamlessly scaled back to PySpark on a distributed cluster (AWS EMR or Azure Databricks) by simply swapping the ingestion logic, as the feature engineering and modeling logic follow universal data frame principles.
 
 ---
 
